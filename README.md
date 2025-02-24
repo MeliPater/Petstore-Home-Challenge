@@ -196,9 +196,18 @@ PetStorePerformance
 ## Improvement
 1. Additionally, a resources folder was created to store environment variables and URLs in the config.json file, allowing for future configuration management and easier script maintenance.
 2. The current framework uses thresholds to validate some system behavior. A valuable improvement would be to abort the test if the system fails to recover within a specified time frame. This would save time and resources by stopping tests early when performance criteria are not met, avoiding prolonged execution of failing scenarios.
+3. Include full E2E flow testing to evaluate the system's overall perfomance.
 
-## Load Test Result
-## Peak Test Result
-## Stress Test Result
+## Test Result
+Performance testing was primarily focused on the delete service. This decision was made because this flow integrates two critical operations: **order creation** and **order deletion** (part of the CRUD operations). This is a key workflow in the `/Store` service, as it simulates a real-world scenario where users frequently create and cancel orders.
+
+🔎🔎🔎
+1. High transaction volume
+2. Impact on inventory
+3. Risk of bottlenecks
+
+### Peak Test 
+
+### Stress Test
 
 ## Conclusions
