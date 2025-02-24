@@ -201,10 +201,9 @@ PetStorePerformance
 ## Test Result
 Performance testing was primarily focused on the delete service. This decision was made because this flow integrates two critical operations: **order creation** and **order deletion** (part of the CRUD operations). This is a key workflow in the `/Store` service, as it simulates a real-world scenario where users frequently create and cancel orders.
 
-🔎🔎🔎
-1. High transaction volume
-2. Impact on inventory
-3. Risk of bottlenecks
+🔎 High transaction volume
+🔎 Impact on inventory
+🔎 Risk of bottlenecks
 
 ### Peak test evidence
 ![image](https://github.com/user-attachments/assets/a00ae116-9b8a-48ce-931f-d8059354a0fd)
