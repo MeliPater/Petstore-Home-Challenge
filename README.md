@@ -206,7 +206,8 @@ Performance testing was primarily focused on the delete service. This decision w
 2. Impact on inventory
 3. Risk of bottlenecks
 
-### Peak Test 
+### Peak test evidence
+![image](https://github.com/user-attachments/assets/a00ae116-9b8a-48ce-931f-d8059354a0fd)
 
 ### Stress Test
 
