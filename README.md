@@ -214,10 +214,16 @@ Performance testing was primarily focused on the delete service. This decision w
 | **Error rate** |96.8% (336275 failures out of 347387 requests)| The system could not handle the load, resulting in a high failure rate |
 |**Error code** | `500` (Internal Server Error)| Server errors due to resource exhaustion or logic issues|
 |**Response time**|Average: 77.35μs; Maximun: 87.51ms | Although the avarage time is low, the high failure rate indicates system overload |
-|**Throughput**|521.3 requests/second|High request volume, but most of them failed due system limitations |
+|**Throughput**|424.8 requests/second|High request volume, but most of them failed due system limitations |
 |**Thresholds crossed**|`http_reg_failed`(request failures)| The failure rate exceeded aceptable threshold, which indicates a severe issue under the load |
 
 ### Stress Test
 ![image](https://github.com/user-attachments/assets/7be0175a-46fc-42cf-b719-cfac4838f4e0)
-
-## Conclusions
+| Metric | Value | Implication |
+|-----|------|------|
+| **Scenario** | 200 VUs (3 min) → 1000 VUs (12 min) → 0 VUs (3 min) | Simulation of a sustained high load |
+| **Error rate** |98.17% (287397 failures out of 292732 requests)| The system struggled significantly, with almost all requests failing |
+|**Error code** | `500` (Internal Server Error)| Server errors due to resource exhaustion or logic issues|
+|**Response time**|Average: 115.29μs; Maximun: 14.56ms | Although the avarage time is low, the high failure rate indicates system overload |
+|**Throughput**|229.16 requests/second|High request volume, but most of them failed due system limitations |
+|**Thresholds crossed**|`http_reg_failed`(request failures)| The failure rate exceeded aceptable threshold, which indicates a severe issue under the load |
