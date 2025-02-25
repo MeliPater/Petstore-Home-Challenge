@@ -3,9 +3,10 @@
 The challenge is divided into two tasks, API Test Automation and API Performance Testing, applied to the Swagger Petstore.
 
 ## Swagger Petstore information
+The sample <a href="https://petstore3.swagger.io">Pet Store server</a> allows managing a pet store with CRUD operations. The service has three main resources shown below.
 
 <details>
-<summary><h5>The sample <a href="https://petstore3.swagger.io">Pet Store server</a> allows managing a pet store with CRUD operations. The service has three main resources (please click here to see...)</h5></summary>
+<summary>please click here to see...</summary>
 
 ```
 Swagger Petstore API
@@ -196,9 +197,33 @@ PetStorePerformance
 ## Improvement
 1. Additionally, a resources folder was created to store environment variables and URLs in the config.json file, allowing for future configuration management and easier script maintenance.
 2. The current framework uses thresholds to validate some system behavior. A valuable improvement would be to abort the test if the system fails to recover within a specified time frame. This would save time and resources by stopping tests early when performance criteria are not met, avoiding prolonged execution of failing scenarios.
+3. Include full E2E flow testing to evaluate the system's overall perfomance.
 
-## Load Test Result
-## Peak Test Result
-## Stress Test Result
+## Test Result
+Performance testing was primarily focused on the delete service. This decision was made because this flow integrates two critical operations: **order creation** and **order deletion** (part of the CRUD operations). This is a key workflow in the `/Store` service, as it simulates a real-world scenario where users frequently create and cancel orders.
 
-## Conclusions
+🔎 High transaction volume
+🔎 Impact on inventory
+🔎 Risk of bottlenecks 🔎
+
+### Peak test evidence
+![image](https://github.com/user-attachments/assets/a00ae116-9b8a-48ce-931f-d8059354a0fd)
+| Metric | Value | Implication |
+|-----|------|------|
+| **Scenario** | 100 VUs (1 min) → 2000 VUs (8 min) → 0 VUs (3 min) | Simulation of a realistic traffic spike with rapid scaling |
+| **Error rate** |96.8% (336275 failures out of 347387 requests)| The system could not handle the load, resulting in a high failure rate |
+|**Error code** | `500` (Internal Server Error)| Server errors due to resource exhaustion or logic issues|
+|**Response time**|Average: 77.35μs; Maximun: 87.51ms | Although the avarage time is low, the high failure rate indicates system overload |
+|**Throughput**|424.8 requests/second|High request volume, but most of them failed due system limitations |
+|**Thresholds crossed**|`http_reg_failed`(request failures)| The failure rate exceeded aceptable threshold, which indicates a severe issue under the load |
+
+### Stress Test
+![image](https://github.com/user-attachments/assets/7be0175a-46fc-42cf-b719-cfac4838f4e0)
+| Metric | Value | Implication |
+|-----|------|------|
+| **Scenario** | 200 VUs (3 min) → 1000 VUs (12 min) → 0 VUs (3 min) | Simulation of a sustained high load |
+| **Error rate** |98.17% (287397 failures out of 292732 requests)| The system struggled significantly, with almost all requests failing |
+|**Error code** | `500` (Internal Server Error)| Server errors due to resource exhaustion or logic issues|
+|**Response time**|Average: 115.29μs; Maximun: 14.56ms | Although the avarage time is low, the high failure rate indicates system overload |
+|**Throughput**|229.16 requests/second|High request volume, but most of them failed due system limitations |
+|**Thresholds crossed**|`http_reg_failed`(request failures)| The failure rate exceeded aceptable threshold, which indicates a severe issue under the load |
