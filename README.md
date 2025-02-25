@@ -3,9 +3,10 @@
 The challenge is divided into two tasks, API Test Automation and API Performance Testing, applied to the Swagger Petstore.
 
 ## Swagger Petstore information
+The sample <a href="https://petstore3.swagger.io">Pet Store server</a> allows managing a pet store with CRUD operations. The service has three main resources shown below.
 
 <details>
-<summary><h5>The sample <a href="https://petstore3.swagger.io">Pet Store server</a> allows managing a pet store with CRUD operations. The service has three main resources (please click here to see...)</h5></summary>
+<summary>please click here to see...</summary>
 
 ```
 Swagger Petstore API
@@ -217,5 +218,6 @@ Performance testing was primarily focused on the delete service. This decision w
 |**Thresholds crossed**|`http_reg_failed`(request failures)| The failure rate exceeded aceptable threshold, which indicates a severe issue under the load |
 
 ### Stress Test
+![image](https://github.com/user-attachments/assets/7be0175a-46fc-42cf-b719-cfac4838f4e0)
 
 ## Conclusions
