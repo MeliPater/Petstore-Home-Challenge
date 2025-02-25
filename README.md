@@ -203,7 +203,7 @@ Performance testing was primarily focused on the delete service. This decision w
 
 🔎 High transaction volume
 🔎 Impact on inventory
-🔎 Risk of bottlenecks
+🔎 Risk of bottlenecks 🔎
 
 ### Peak test evidence
 ![image](https://github.com/user-attachments/assets/a00ae116-9b8a-48ce-931f-d8059354a0fd)
