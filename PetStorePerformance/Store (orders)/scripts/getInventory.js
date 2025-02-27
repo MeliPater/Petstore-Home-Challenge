@@ -35,7 +35,7 @@ export let options = {
 };
 
 export default function () {
-    let url = 'https://petstore3.swagger.io/api/v3/store/inventory';
+    let url = 'http://localhost:8080/api/v3/store/inventory';
 
     let response = http.get(url);
 
